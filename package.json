@@ -6,6 +6,7 @@
   "author": "Alois Blue",
   "license": "MIT",
   "scripts": {
+    "test": "NODE_ENV=testing jest --watchAll --verbose --coverage",
     "dev": "nodemon --exec babel-node -- api/index.js"
   },
   "dependencies": {

@@ -63,7 +63,16 @@ userSchema.methods.hashPassword = function hashPassword(newUser, res) {
       this.password = hash;
       newUser.save()
         .then(user => {
-          res.json(user)
+          res.status(201).json({
+            status: '201',
+            message: 'You have successfully signed up',
+            userCreated: {
+              firstName: user.firstName,
+              lastName: user.lastName,
+              userName: user.userName,
+              email: user.email
+            }
+          })
         })
         .catch(() => {
           errors.userName = "User name already taken";
