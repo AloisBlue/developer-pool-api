@@ -57,7 +57,7 @@ router.post("/question", auth, (req, res) => {
             }
           })
         })
-        .catch(err => res.json(err));
+        .catch(error => res.json(error));
     })
     .catch(err => res.json(err));
 });
@@ -80,7 +80,7 @@ router.get("/questions", (req, res) => {
         });
       }
       // continue
-      return res.json({
+      res.json({
         status: '200',
         message: 'Question(s) listed below',
         count: questionsFound.length,

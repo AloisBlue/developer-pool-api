@@ -3,9 +3,10 @@ import { expect } from "chai";
 import server from "../index";
 import User from "../models/User";
 
-let Server;
 
 describe('/api/users', () => {
+  let Server;
+
   beforeEach(() => { Server = server })
   afterEach(() => Server.close());
   afterEach(() => User.deleteMany({}));
@@ -381,20 +382,14 @@ describe('/api/users', () => {
               password: 'dEvelop@r1'
             }})
             .end((error, response) => {
+              if (error) {
+                throw error;
+              }
               expect(response.statusCode).to.equal(200);
               done();
             });
         });
     });
-
-    // it('should check if user exists', (done) => {
-    //   request(Server)
-    //     .post('/api/users/login')
-    //     .send()
-    //     .end((err, res) => {
-    //       done();
-    //     });
-    // });
 
   });
 });
